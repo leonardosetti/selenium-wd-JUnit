@@ -7,15 +7,17 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.List;
+
 public class CampoTreinamentoTest {
     static WebDriver driver;
 
     @BeforeAll
     static void setBrowser() {
-//      driver = new ChromeDriver(); // use chrome as default browser
+/*      driver = new ChromeDriver(); // use chrome as default browser
 
-//      driver = new FirefoxDriver(); // use firefox as default browser
-
+      driver = new FirefoxDriver(); // use firefox as default browser
+*/
         ChromeOptions options = new ChromeOptions(); // needed to set Brave as browser
         options.setBinary("/usr/bin/brave");// needed to set Brave as browser
         driver = new ChromeDriver(options); // use brave as default browser
@@ -23,7 +25,9 @@ public class CampoTreinamentoTest {
 
     @AfterAll
     static void tearDown() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 
     @BeforeEach
@@ -152,4 +156,44 @@ public class CampoTreinamentoTest {
         fromList.selectByIndex(0);
         Assertions.assertEquals("1o grau incompleto", fromList.getFirstSelectedOption().getText());
     }
+
+    @Test
+    public void verifyComboBxToFail() {
+        WebElement comboBx = driver.findElement(By.id("elementosForm:escolaridade"));
+        Select fromList = new Select(comboBx);
+
+        List<WebElement> options = fromList.getOptions();
+        Assertions.assertEquals(8, options.size());
+
+        boolean find = false;
+
+        for (WebElement option : options) {
+            if (option.getText().isEmpty() || option.getText().isBlank() || option.getText().equals("FailTest")) {
+                find = true;
+                break;
+            }
+        }
+        //Assertions.assertTrue(find); // this is negative verification
+        Assertions.assertFalse(find);
+    }
+
+    @Test
+    public void verifyComboBxRedux() {
+        WebElement comboBx = driver.findElement(By.id("elementosForm:escolaridade"));
+        Select fromList = new Select(comboBx);
+
+        List<WebElement> options = fromList.getOptions();
+        Assertions.assertEquals(8, options.size());
+
+        boolean find = false;
+
+        for (WebElement option : options) {
+            if (option.getText().equals("1o grau incompleto") || option.getText().equals("2o grau incompleto") || option.getText().equals("1o grau completo") || option.getText().equals("2o grau completo") || option.getText().equals("Mestrado") || option.getText().equals("Doutorado") || option.getText().equals("Superior") || option.getText().equals("Especialização")) {
+                find = true;
+                break;
+            }
+        }
+        Assertions.assertTrue(find);
+    }
+
 }
