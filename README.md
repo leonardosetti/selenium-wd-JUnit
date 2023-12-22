@@ -63,7 +63,7 @@ Embora no caso do Selenium com Java não seja obrigatório o uso de WebDrivers, 
 
 ### Maven, eu escolho você!
 
-Existem opções de configuração de dependências para serem utilizadas com o Selenium, seja via [![`pom.xml`]](/pom.xml_template) através do [Apache Maven](https://maven.apache.org/) ou [Gradle](https://gradle.org/).
+Existem opções de configuração de dependências para serem utilizadas com o Selenium, seja via [`pom.xml`](/pom.xml_template) através do [Apache Maven](https://maven.apache.org/) ou [Gradle](https://gradle.org/).
 Escolhi usar o Maven por ser uma ferramenta de fácil utilização e já é integrada a algumas IDEs para desenvolvimento Java como [IntelliJ](https://download-cdn.jetbrains.com/idea/ideaIC-2023.3.1.tar.gz), [Eclipse](https://archive.eclipse.org/technology/epp/downloads/release/kepler/SR1/eclipse-java-kepler-SR1-linux-gtk-x86_64.tar.gz) e [NetBeans](https://dlcdn.apache.org/netbeans/netbeans/20/netbeans-20-bin.zip)
 
 ```bash
