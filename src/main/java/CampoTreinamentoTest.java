@@ -14,9 +14,10 @@ public class CampoTreinamentoTest {
 
     @BeforeAll
     static void setBrowser() {
-/*      driver = new ChromeDriver(); // use chrome as default browser
+/*
+        driver = new ChromeDriver(); // use chrome as default browser
 
-      driver = new FirefoxDriver(); // use firefox as default browser
+        driver = new FirefoxDriver(); // use firefox as default browser
 */
         ChromeOptions options = new ChromeOptions(); // needed to set Brave as browser
         options.setBinary("/usr/bin/brave");// needed to set Brave as browser
